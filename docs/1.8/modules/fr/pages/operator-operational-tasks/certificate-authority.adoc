@@ -98,7 +98,7 @@ spec:
   upgradeContainer:
     envs:
       # Use FORCE to force an upgrade.
-      # This is convenient when the `+osImage+` is the same, and only the `+cloudConfig+` changed.
+      # This is convenient when the `osImage` is the same, and only the `cloudConfig` changed.
       - name: FORCE
         value: "false"
 ----

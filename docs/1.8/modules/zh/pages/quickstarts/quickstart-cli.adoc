@@ -158,7 +158,7 @@ kubectl apply -f https://raw.githubusercontent.com/rancher/elemental-docs/main/e
 
 [,shell]
 ----
-wget --no-check-certificate `+kubectl get machineregistration -n fleet-default fire-nodes -o jsonpath="{.status.registrationURL}"+` -O initial-registration.yaml
+wget --no-check-certificate `kubectl get machineregistration -n fleet-default fire-nodes -o jsonpath="{.status.registrationURL}"` -O initial-registration.yaml
 ----
 ====
 
@@ -176,7 +176,7 @@ wget --no-check-certificate `+kubectl get machineregistration -n fleet-default f
 [,shell]
 ----
 kubectl wait --for=condition=ready pod -n fleet-default fire-img 
-wget --no-check-certificate `+kubectl get seedimage -n fleet-default fire-img -o jsonpath="{.status.downloadURL}"+` -O elemental.x86_64.iso 
+wget --no-check-certificate `kubectl get seedimage -n fleet-default fire-img -o jsonpath="{.status.downloadURL}"` -O elemental.x86_64.iso 
 ----
 
 第一个命令等待 ISO 构建并准备好，第二个命令将其下载到当前目录，文件名为 `elemental-x86_64.iso`。

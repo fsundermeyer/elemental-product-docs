@@ -15,11 +15,11 @@ metadata:
   # deletionTimestamp has been set. This object has been marked for deletion.
   deletionTimestamp: "2023-08-04T08:41:25Z"
   annotations:
-    # `+resettable+` annotation is enabled.
+    # `resettable` annotation is enabled.
     # This means the machine has to go through reset, before deletion of this object.
     elemental.cattle.io/resettable: "true"
-  # `+machineinventory.elemental.cattle.io+` finalizer is set.
-  #  The `+elemental-operator+` is going to create a reset plan for the machine to execute.
+  # `machineinventory.elemental.cattle.io` finalizer is set.
+  #  The `elemental-operator` is going to create a reset plan for the machine to execute.
   #  After successful execution of the reset plan, the finalizer is removed and the object will be deleted.
   finalizers:
   - machineinventory.elemental.cattle.io
@@ -48,17 +48,17 @@ Vous pouvez également suivre ses progrès à partir des journaux de la machine 
 ----
 apiVersion: v1
 kind: Secret
-# This is a `+elemental.cattle.io/plan+` secret plan.
+# This is a `elemental.cattle.io/plan` secret plan.
 type: elemental.cattle.io/plan
 metadata:
   annotations:
-    # This is a `+reset+` plan type.
+    # This is a `reset` plan type.
     elemental.cattle.io/plan.type: reset
   labels:
     elemental.cattle.io/managed: "true"
   name: m-bf1008a1-61d6-4355-b5f5-f7d1c527affe
   namespace: fleet-default
-  # It is owned by the `+MachineInventory+` waiting for deletion.
+  # It is owned by the `MachineInventory` waiting for deletion.
   ownerReferences:
   - apiVersion: elemental.cattle.io/v1beta1
     controller: true

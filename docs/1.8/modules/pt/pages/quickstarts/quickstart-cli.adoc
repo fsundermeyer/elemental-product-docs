@@ -158,7 +158,7 @@ Você pode baixá-lo com:
 
 [,shell]
 ----
-wget --no-check-certificate `+kubectl get machineregistration -n fleet-default fire-nodes -o jsonpath="{.status.registrationURL}"+` -O initial-registration.yaml
+wget --no-check-certificate `kubectl get machineregistration -n fleet-default fire-nodes -o jsonpath="{.status.registrationURL}"` -O initial-registration.yaml
 ----
 ====
 
@@ -176,7 +176,7 @@ A imagem de seed criada pelo recurso `SeedImage` acima pode ser baixada como um 
 [,shell]
 ----
 kubectl wait --for=condition=ready pod -n fleet-default fire-img 
-wget --no-check-certificate `+kubectl get seedimage -n fleet-default fire-img -o jsonpath="{.status.downloadURL}"+` -O elemental.x86_64.iso 
+wget --no-check-certificate `kubectl get seedimage -n fleet-default fire-img -o jsonpath="{.status.downloadURL}"` -O elemental.x86_64.iso 
 ----
 
 O primeiro comando aguarda que o ISO seja construído e esteja pronto; o segundo o baixa no diretório atual com o nome `elemental-x86_64.iso`. 
